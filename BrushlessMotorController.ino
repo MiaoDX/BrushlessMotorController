@@ -10,8 +10,8 @@ void setup()
 	initBlController();
 	initMotorStuff();
 	motorPowerOff(0);
-        motorPowerOff(1);
-        delay(1000);
+  motorPowerOff(1);
+  delay(1000);
 	sei();
 }
 byte mode_byts[5];
@@ -36,9 +36,14 @@ void loop()
 				check_byte ^= mode_byts[i];
 			}
 			if(check_byte == 0 && parseBytes() == 0){
+//        Serial.print("We got:");
+//        Serial.println(ctl_motor_num);
+//        Serial.println(ctl_motor_speed);
+//        Serial.println(ctl_motor_power);
 				setMotorMode(ctl_motor_num,ctl_motor_speed,ctl_motor_power);
 			}else{
                 //Serial.print('$');
+                Serial.println("Failed in the check");
 	        }
 		}else{
 			//Serial.write('$');
